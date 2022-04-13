@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block page_contetnt %}
+    <div class="flexslider ">
+        <!-- class="slides"  -->
+        <ul>
+            <li>
+                <!--pic-->
+                <div class="overlay"></div>
+                <img src="{% static 'images/templatemo_header_1.jpg' %}" alt="Special 1">
+
+                <!--table-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-lg-4">
+                            <div class="flex-caption visible-lg">
+                                <span class="price">Welcome Traveller</span>
+                                <h3 class="title">Travel your dreams </h3>
+                                <p>Get Next Destination remains a place to connect with others through curiosity and
+                                    discovery. I hope you enjoy it!</p>
+                                {% if request.user.is_authenticated %}
+                                    <a href="{% url 'destinations' %}" class="slider-btn">Travel Inspirations</a>
+                                {% else %}
+                                    <a href="{% url 'login' %}" class="slider-btn">Travel Inspirations</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div> <!-- /.flexslider -->
+
+    <div class="container">
+        <div class="row">
+
+            <div class="our-listing owl-carousel">
+                {% for destination in first_six_destinations %}
+                    <div class="list-item">
+                        <div class="list-thumb">
+                            <div class="title">
+                                <h4>{{ destination.country_name }}</h4>
+                            </div>
+                            <img src="{{ destination.image.url }}" width="270" height="200" alt="destination image">
+                        </div> <!-- /.list-thumb -->
+                        <div class="list-content">
+                            <h5>{{ destination.venue_name }}</h5>
+                            <span>{{ destination.description|slice:20 }}</span>
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'destination' destination.pk %}" class="price-btn">Explore Now</a>
+                            {% else %}
+                                <a href="{% url 'login' %}" class="price-btn">Explore Now</a>
+                            {% endif %}
+                        </div> <!-- /.list-content -->
+                    </div> <!-- /.list-item -->
+                {% endfor %}
+            </div> <!-- /.our-listing -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div class="middle-content"></div>
+
+
+
+
+{% endblock %}

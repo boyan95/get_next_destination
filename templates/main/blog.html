@@ -1,0 +1,87 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_contetnt %}
+
+    <div class="page-top" id="templatemo_services">
+    </div> <!-- /.page-header -->
+
+    <div class="middle-content">
+
+        <a href="{% url 'article create' %}" class="btn btn-success btn-lg btn-block">Post New Article</a>
+        <nav id="example-div" class="bg-info border d-flex aligns-items-center justify-content-center"
+             style="height:100px"
+             aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="{% url 'blog' %}?page={{ page_obj.previous_page_number }}"
+                           tabindex="-1"
+                           aria-disabled="true">Previous</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="{% url 'blog' %}?page={{ page_obj }}"
+                           tabindex="-1"
+                           aria-disabled="true">Previous</a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item"><a class="page-link" href="{% url 'blog' %}">1</a>
+                </li>
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="{% url 'blog' %}?page=2">2</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link" href="{% url 'blog' %}?page=2">2</a>
+                    </li>
+                {% endif %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="{% url 'blog' %}?page=3">3</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled"><a class="page-link" href="{% url 'blog' %}?page=3">3</a>
+                    </li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="{% url 'blog' %}?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link"
+                           href="{% url 'blog' %}?page={{ page_obj }}">Next</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </nav>
+        <br>
+        <br>
+
+        <div class="container">
+            <div class="row">
+                {% for article in articles %}
+                    <div class="col-md-4">
+                        <div class="widget-item">
+                            {#                <h3 class="widget-title"></h3>#}
+                            <div class="sample-thumb">
+                                <a href="{% url 'article details' article.pk %}">
+                                    <img src="{{ article.image.url }}" alt="article photo">
+                                </a>
+                            </div> <!-- /.sample-thumb -->
+                            <br>
+                            <h3 class="widget-title">{{ article.article_name }}</h3>
+                            <br>
+                            <button type="button" class="btn btn-success"><a
+                                    href="{% url 'article details' article.pk %}">Read
+                                More</a></button>
+                        </div> <!-- /.widget-item -->
+                    </div> <!-- /.col-md-4 -->
+                {% endfor %}
+            </div> <!-- /.row first -->
+        </div> <!-- /.container -->
+    </div> <!-- /.middle-content -->
+{% endblock %}

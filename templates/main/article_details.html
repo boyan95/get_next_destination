@@ -1,0 +1,65 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block page_contetnt %}
+
+    <div class="middle-content">
+        <div class="container">
+
+            <div class="row"><!-- first row -->
+
+                <div class="col-md-6"><!-- first column -->
+                    <div class="widget-item">
+                        <div class="sample-thumb">
+                            <br>
+                            <br>
+                            <br>
+                            <img src="{{ object.image.url }}" width="300" height="400" alt="object image"
+                                 title="about us">
+                        </div> <!-- /.sample-thumb -->
+                    </div> <!-- /.widget-item -->
+                </div> <!-- /.col-md-4 -->
+
+
+                <div class="col-md-6"><!-- second column -->
+                    <div class="widget-item">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <h3 class="widget-title">{{ object.article_name }}</h3>
+                        <br>
+                        <form action="{% url 'likes article' current_article.pk %}" method="POST">
+                            {% csrf_token %}
+                            {% if not is_owner %}
+
+                                <button type="submit" name="post_id" value="{{ current_article.id }}"
+                                        class="btn btn-primary btn-sm">Like
+                                </button>
+                                {#                                <a href="{% url 'likes destination' object.pk %}"><i class="fa fa-thumbs-o-up"#}
+                                {#                                                                                     aria-hidden="true"></i></a>#}
+                            {% endif %}
+                            <!-- Likes Counter -->
+                            <p class="mt-2">Likes: {{ current_article.total_likes }}</p>
+                        </form>
+                        {#                        {% if not is_owner %}#}
+                        {#                            <a href="{% url 'likes article' object.pk %}"><i class="fa fa-thumbs-o-up"#}
+                        {#                                                                              aria-hidden="true"></i></a>#}
+                        {#                        {% endif %}#}
+                        {#                        <!-- Likes Counter -->#}
+                        {#                        <p class="mt-2">Likes: {{ current_article.likes }}</p>#}
+                        {% if is_owner %}
+                            <br>
+                            <!-- Buttons -->
+                            <a href="{% url 'edit article' current_article.pk %}" class="btn btn-warning">Edit</a>
+                            <a href="{% url 'delete article' current_article.pk %}"
+                               class="btn btn-danger">Delete</a>
+                        {% endif %}
+                    </div> <!-- /.widget-item -->
+                    <p>{{ current_article.description }}</p>
+                </div> <!-- /.col-md-4 -->
+            </div> <!-- /.row first -->
+        </div> <!-- /.container -->
+    </div> <!-- /.middle-content -->
+
+
+{% endblock %}
