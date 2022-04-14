@@ -170,6 +170,6 @@ AUTH_USER_MODEL = 'accounts.TravellerUser'
 cloudinary.config(
     cloud_name=os.getenv('CLOUD_NAME', None),
     api_key=os.getenv('API_KEY', None),
-    api_secret="9ZSorPTFv_dLkB_QwUQkeFsTqSo",
+    api_secret=os.getenv('API_SECRET', None),
     api_environment_variable=os.getenv('API_ENVIRONMENT_VARIABLE', None),
 )
