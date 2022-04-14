@@ -13,15 +13,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+{#    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">#}
     <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-    <link rel="stylesheet" href="{% static 'css/templatemo_misc.css' %}">
+{#    <link rel="stylesheet" href="{% static 'css/templatemo_misc.css' %}">#}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="{% static 'js/vendor/modernizr-2.6.1-respond-1.1.0.min.js' %}"></script>
 </head>
 <body>
-{{ request.user }}
 {#<br><br><br><br>#}
 <div class="site-header">
     {#    <div class="page-top" id="templatemo_contact">#}
@@ -54,9 +53,6 @@
                                 <li><a href="{% url 'login' %}">Login</a></li>
                             {% endif %}
                         </ul>
-                        <a href="{% url 'index' %}" class="toggle-menu visible-sm visible-xs">
-                            <i class="fa fa-bars"></i>
-                        </a>
                     </div> <!-- /.main-menu -->
                 </div> <!-- /.col-md-8 -->
             </div> <!-- /.row -->
