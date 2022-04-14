@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import forms as auth_forms
 from django.db import models
 from django.template.defaultfilters import slugify
-
+from cloudinary import models as clodinary_models
 from steal_destination.common.validators import validate_file_max_size_in_mb
 
 UserModel = get_user_model()
@@ -48,7 +48,7 @@ class Destination(models.Model):
         null=True,
         blank=True,
     )
-    image = models.FileField(blank=True)
+    image = clodinary_models.CloudinaryField('image')
     likes = models.ManyToManyField(UserModel, related_name='destination_likes')
 
     # one-to-one
@@ -84,7 +84,7 @@ class Blog(models.Model):
         max_length=MAX_ARTICLE_NAME,
     )
     description = models.TextField()
-    image = models.ImageField()
+    image = clodinary_models.CloudinaryField('image')
     likes = models.ManyToManyField(
         UserModel, related_name='blog_likes'
     )
@@ -109,7 +109,7 @@ class Post(models.Model):
     country_name = models.CharField(max_length=COUNTRY_NAME_MAX_LENGTH)
     venue_name = models.CharField(max_length=VENUE_NAME_MAX_LENGTH)
     description = models.TextField()
-    image = models.FileField(blank=True)
+    image = clodinary_models.CloudinaryField('image')
 
     user = models.ForeignKey(
         UserModel,
@@ -123,7 +123,7 @@ class Post(models.Model):
 
 class PostImage(models.Model):
     post = models.ForeignKey(Post, default=None, on_delete=models.CASCADE)
-    images = models.FileField(upload_to='gallery/')
+    image = clodinary_models.CloudinaryField('image')
 
     def __str__(self):
         return self.post.country_name
