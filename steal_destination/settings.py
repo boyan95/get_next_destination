@@ -14,9 +14,9 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import cloudinary
-
+from dotenv import load_dotenv
 from utils import is_production, is_test
-
+load_dotenv()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
