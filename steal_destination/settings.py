@@ -82,10 +82,10 @@ WSGI_APPLICATION = 'steal_destination.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'steal_destination_db',
-        'USER': 'postgres',
-        'PASSWORD': '1123QwER',
-        'HOST': '127.0.0.1',
+        'NAME': 'dad3mb64ku2rbv',
+        'USER': 'bxdooubuonttst',
+        'PASSWORD': '8950217a3b7ea778c4b93b149b7b018865cb747553994de22425ce3e85b68563',
+        'HOST': 'ec2-99-80-170-190.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
