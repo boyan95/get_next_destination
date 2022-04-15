@@ -167,6 +167,12 @@ LOGGING = {
 
 AUTH_USER_MODEL = 'accounts.TravellerUser'
 
+cloudinary.config(
+        cloud_name=os.getenv('CLOUD_NAME', None),
+        api_key=os.getenv('API_KEY', None),
+        api_secret=os.getenv('API_SECRET', None),
+)
+
 # cloudinary.config(
 #     cloud_name=os.getenv('CLOUD_NAME', None),
 #     api_key=os.getenv('API_KEY', None),
