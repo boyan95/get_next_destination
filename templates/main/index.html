@@ -2,63 +2,114 @@
 {% load static %}
 
 {% block page_contetnt %}
-    <div class="flexslider ">
-        <!-- class="slides"  -->
-        <ul>
-            <li>
-                <!--pic-->
-                <div class="overlay"></div>
-                <img src="{% static 'images/templatemo_header_1.jpg' %}" alt="Special 1">
-
-                <!--table-->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-5 col-lg-4">
-                            <div class="flex-caption visible-lg">
-                                <span class="price">Welcome Traveller</span>
-                                <h3 class="title">Travel your dreams </h3>
-                                <p>Get Next Destination remains a place to connect with others through curiosity and
-                                    discovery. I hope you enjoy it!</p>
+    {#    <div class="flexslider ">#}
+    {#        <!-- class="slides"  -->#}
+    {#        <ul>#}
+    {#            <li>#}
+    {#                <!--pic-->#}
+    {#                <div class="overlay"></div>#}
+    {#                <img src="{% static 'images/templatemo_header_1.jpg' %}" alt="Special 1">#}
+    {##}
+    {#                <!--table-->#}
+    {#                <div class="container">#}
+    {#                    <div class="row">#}
+    {#                        <div class="col-md-5 col-lg-4">#}
+    {#                            <div class="flex-caption visible-lg">#}
+    {#                                <span class="price">Welcome Traveller</span>#}
+    {#                                <h3 class="title">Travel your dreams </h3>#}
+    {#                                <p>Get Next Destination remains a place to connect with others through curiosity and#}
+    {#                                    discovery. I hope you enjoy it!</p>#}
+    {#                                {% if request.user.is_authenticated %}#}
+    {#                                    <a href="{% url 'destinations' %}" class="slider-btn">Travel Inspirations</a>#}
+    {#                                {% else %}#}
+    {#                                    <a href="{% url 'login' %}" class="slider-btn">Travel Inspirations</a>#}
+    {#                                {% endif %}#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </li>#}
+    {#        </ul>#}
+    {#    </div> <!-- /.flexslider -->#}
+    {#    <div id="carouselExampleInterval" class="carousel slide" data-mdb-ride="carousel">#}
+    {#        <div class="carousel-inner">#}
+    {#            <div class="carousel-item active" data-mdb-interval="10000">#}
+    {#                <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100" alt="Wild Landscape"/>#}
+    {#            </div>#}
+    {#            <div class="carousel-item" data-mdb-interval="2000">#}
+    {#                <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100" alt="Camera"/>#}
+    {#            </div>#}
+    {#            <div class="carousel-item">#}
+    {#                <img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" class="d-block w-100" alt="Exotic Fruits"/>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#        <button class="carousel-control-prev" data-mdb-target="#carouselExampleInterval" type="button"#}
+    {#                data-mdb-slide="prev">#}
+    {#            <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
+    {#            <span class="visually-hidden">Previous</span>#}
+    {#        </button>#}
+    {#        <button class="carousel-control-next" data-mdb-target="#carouselExampleInterval" type="button"#}
+    {#                data-mdb-slide="next">#}
+    {#            <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
+    {#            <span class="visually-hidden">Next</span>#}
+    {#        </button>#}
+    {#    </div>#}
+    <div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+{#            <div class="carousel-indicators">#}
+{#                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"#}
+{#                        aria-current="true" aria-label="Slide 1"></button>#}
+{#                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"#}
+{#                        aria-label="Slide 2"></button>#}
+{#                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"#}
+{#                        aria-label="Slide 3"></button>#}
+{#            </div>#}
+            <div class="carousel-inner">
+                {% if first_destination %}
+                    <div class="item active">
+                        <img src="{{ first_destination.image.url }}" alt="Chicago" style="width:100%;">
+                        <div class="carousel-caption">
+                            <h3>{{ first_destination.country_name }}</h3>
+                            <p>{{ first_destination.venue_name }}</p>
+                            {% if request.user.is_authenticated %}
+                                <a class="explore_now" href="{% url 'destination' first_destination.pk %}">Explore
+                                    now</a>
+                            {% else %}
+                                <a class="explore_now price-btn" href="{% url 'login' %}">Explore Now</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+                {% if second_to__sixth_destinations %}
+                    {% for destination in second_to__sixth_destinations %}
+                        <div class="item">
+                            <img id="index_photo" src="{{ destination.image.url }}" alt="Los Angeles" style="width:100%;height:100%;">
+                            <div class="carousel-caption">
+                                <h2 class="h2">{{ destination.country_name }}</h2>
+                                <p>{{ destination.venue_name }}</p>
                                 {% if request.user.is_authenticated %}
-                                    <a href="{% url 'destinations' %}" class="slider-btn">Travel Inspirations</a>
+                                    <a class="explore_now" href="{% url 'destination' first_destination.pk %}">Explore
+                                        now</a>
                                 {% else %}
-                                    <a href="{% url 'login' %}" class="slider-btn">Travel Inspirations</a>
+                                    <a class="explore_now price-btn" href="{% url 'login' %}">Explore Now</a>
                                 {% endif %}
                             </div>
                         </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div> <!-- /.flexslider -->
-
-    <div class="container">
-        <div class="row">
-
-            <div class="our-listing owl-carousel">
-                {% for destination in first_six_destinations %}
-                    <div class="list-item">
-                        <div class="list-thumb">
-                            <div class="title">
-                                <h4>{{ destination.country_name }}</h4>
-                            </div>
-                            <img src="{{ destination.image.url }}" width="270" height="200" alt="destination image">
-                        </div> <!-- /.list-thumb -->
-                        <div class="list-content">
-                            <h5>{{ destination.venue_name }}</h5>
-                            <span>{{ destination.description|slice:20 }}</span>
-                            {% if request.user.is_authenticated %}
-                                <a href="{% url 'destination' destination.pk %}" class="price-btn">Explore Now</a>
-                            {% else %}
-                                <a href="{% url 'login' %}" class="price-btn">Explore Now</a>
-                            {% endif %}
-                        </div> <!-- /.list-content -->
-                    </div> <!-- /.list-item -->
-                {% endfor %}
-            </div> <!-- /.our-listing -->
-        </div> <!-- /.row -->
-    </div> <!-- /.container -->
-    <div class="middle-content"></div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <br>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
 
 
 

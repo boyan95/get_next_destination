@@ -26,7 +26,7 @@
                         <br>
                         <br>
                         <br>
-                        <h3 class="widget-title">{{ destination.country_name }}</h3>
+                        <h3 class="widget-title">{{ destination.country_name }}, {{ destination.venue_name }}</h3>
                         <br>
                         <form action="{% url 'likes destination' destination.pk %}" method="POST">
                             {% csrf_token %}
@@ -41,12 +41,6 @@
                             <!-- Likes Counter -->
                             <p class="mt-2">Likes: {{ destination.total_likes }}</p>
                         </form>
-                        {#                        {% if not is_owner %}#}
-                        {#                            <a href="{% url 'likes article' object.pk %}"><i class="fa fa-thumbs-o-up"#}
-                        {#                                                                              aria-hidden="true"></i></a>#}
-                        {#                        {% endif %}#}
-                        {#                        <!-- Likes Counter -->#}
-                        {#                        <p class="mt-2">Likes: {{ current_article.likes }}</p>#}
                         {% if is_owner %}
                             <br>
                             <!-- Buttons -->
@@ -55,7 +49,8 @@
                                class="btn btn-danger">Delete</a>
                         {% endif %}
                     </div> <!-- /.widget-item -->
-                    <p>{{ destination.description }}</p>
+                    <br>
+                    <p>Description:<br>{{ destination.description }}</p>
                 </div> <!-- /.col-md-4 -->
             </div> <!-- /.row first -->
         </div> <!-- /.container -->

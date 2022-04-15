@@ -6,111 +6,109 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <meta name="author" content="templatemo">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300' rel='stylesheet' type='text/css'>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/13ccb33514.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
-    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
-    <link rel="stylesheet" href="{% static 'css/templatemo_misc.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <script src="{% static 'js/vendor/modernizr-2.6.1-respond-1.1.0.min.js' %}"></script>
 </head>
 <body>
-{#<br><br><br><br>#}
-<div class="site-header">
-    {#    <div class="page-top" id="templatemo_contact">#}
-    {#    </div> <!-- /.page-header -->#}
-    <div class="container">
-        <div class="main-header">
-            <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-10">
-                    <div class="logo">
-                        <a href="{% url 'index' %}">
-                            <img src="{% static 'images/Get Next Destination (2).png' %}" width="120" height="75"
-                                 alt="international log of Bulgaria"
-                                 title="travel html5 template">
-                        </a>
-                    </div> <!-- /.logo -->
-                </div> <!-- /.col-md-4 -->
-                <div class="col-md-8 col-sm-6 col-xs-2">
-                    <div class="main-menu">
-                        <ul class="visible-lg visible-md">
-                            {% if request.user.is_authenticated %}
-                                <li class="active"><a href="{% url 'index' %}">Home</a></li>
-                                <li><a href="{% url 'destinations' %}">Destinations</a></li>
-                                <li><a href="{% url 'blog' %}">Blog</a></li>
-                                <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                                <li><a href="{% url 'profile' request.user.pk %}">Profile</a></li>
-                                {#                                <li><a href="{% url 'upload' %}">Pics</a></li>#}
-                                <li><a href="{% url 'logout' %}">Logout</a></li>
-                            {% else %}
-                                <li><a href="{% url 'register' %}">Register</a></li>
-                                <li><a href="{% url 'login' %}">Login</a></li>
-                            {% endif %}
-                        </ul>
-                    </div> <!-- /.main-menu -->
-                </div> <!-- /.col-md-8 -->
-            </div> <!-- /.row -->
-        </div> <!-- /.main-header -->
-    </div> <!-- /.container -->
-</div> <!-- /.site-header -->
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class='logo' href="{% url 'index' %}">Get Next Destination</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            {% if request.user.is_authenticated %}
+                <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li><a class="nav-link" href="{% url 'destinations' %}">Destinations</a></li>
+                <li><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
+                <li><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a class="nav-link" href="{% url 'profile' request.user.pk %}">Profile</a></li>
+                {#                <li><a class="nav-link" href="{% url 'upload' %}">Pics</a></li>#}
+                <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+<!-- end navbar -->
 <div class="container py-4">
     {% block page_contetnt %}
     {% endblock %}
 </div>
-<div class="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-sm-4">
-                <div class="footer-logo">
-                    <a href="{% url 'index' %}">
-                        <img src="{% static 'images/Get Next Destination (2).png' %}" width="120" height="80"
-                             alt="international log of Bulgaria">
-                    </a>
-                </div>
-            </div> <!-- /.col-md-4 -->
-            <div class="col-md-4 col-sm-4">
-                <div class="copyright">
-                            <span>
+<footer class="bg-light text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a      target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary btn-floating m-1"
+                    style="background-color: #3b5998;"
+                    href="https://www.facebook.com/boqn.nitodorov"
+                    role="button"
+            ><i class="fab fa-facebook-f"></i
+            ></a>
+            <!-- Instagram -->
+            <a      target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary btn-floating m-1"
+                    style="background-color: #ac2bac;"
+                    href="https://www.instagram.com/_boyant/"
+                    role="button"
+            ><i class="fab fa-instagram"></i
+            ></a>
 
-                                Copyright &copy; 2022 <a href="#">Boyan Todorov</a>
+            <!-- Linkedin -->
+            <a      target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary btn-floating m-1"
+                    style="background-color: #0082ca;"
+                    href="https://www.linkedin.com/in/boyan-todorov-4578141a2/"
+                    role="button"
+            ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <!-- Github -->
+            <a      target="_blank" rel="noopener noreferrer"
+                    class="btn btn-primary btn-floating m-1"
+                    style="background-color: #333333;"
+                    href="https://github.com/boyan95"
+                    role="button"
+            ><i class="fab fa-github"></i
+            ></a>
+        </section>
+        <!-- Section: Social media -->
+    </div>
+    <!-- Grid container -->
 
-
-                                <!--
-                                | Design: <a rel="nofollow" href="http://www.templatemo.com" target="_parent">templatemo</a>
-                                -->
-
-                            </span>
-                </div>
-            </div> <!-- /.col-md-4 -->
-            <div class="col-md-4 col-sm-4">
-                <ul class="social-icons">
-                    <li><a href="#" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-twitter"></a></li>
-                    <li><a href="#" class="fa fa-linkedin"></a></li>
-                    <li><a href="#" class="fa fa-flickr"></a></li>
-                    <li><a href="#" class="fa fa-rss"></a></li>
-                </ul>
-            </div> <!-- /.col-md-4 -->
-        </div> <!-- /.row -->
-    </div> <!-- /.container -->
-</div> <!-- /.site-footer -->
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        <a id='copyrigth' target="_blank" rel="noopener noreferrer" class="text-white"
+           href="https://www.linkedin.com/in/boyan-todorov-4578141a2/">Boyan Todorov </a>
+    </div>
+    <!-- Copyright -->
+</footer>
 <!-- JavaScript Bundle with Popper -->
-<script src="{% static 'js/vendor/jquery-1.11.0.min.js' %}"></script>
+{#<script src="{% static 'js/vendor/jquery-1.11.0.min.js' %}"></script>#}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="{% static 'js/vendor/jquery-1.11.0.min.js' %}"><\/script>')</script>
+{#<script>window.jQuery || document.write('<script src="{% static 'js/vendor/jquery-1.11.0.min.js' %}"><\/script>')</script>#}
 {#<script src="{% static 'js/bootstrap.js' %}"></script>#}
-<script src="{% static 'js/plugins.js' %}"></script>
-<script src="{% static 'js/main.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+{#<script src="{% static 'js/plugins.js' %}"></script>#}
+{#<script src="{% static 'js/main.js' %}"></script>#}
 </body>
 </html>
