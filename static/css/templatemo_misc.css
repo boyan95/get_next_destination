@@ -60,9 +60,9 @@ Template: 409 travel
     -webkit-tap-highlight-color: transparent;
 }
 
-.grabbing {
-    cursor: url(../images/grabbing.png) 8 8,move;
-}
+/*.grabbing {*/
+/*    cursor: url(../images/grabbing.png) 8 8,move;*/
+/*}*/
 
 .owl-carousel .owl-wrapper,.owl-carousel .owl-item {
     -webkit-backface-visibility: hidden;
