@@ -3,7 +3,6 @@ from django.db import models
 from django.contrib.auth import models as auth_models
 from steal_destination.accounts.managers import TravellerUsersManager
 from steal_destination.common.validators import only_letters_validator
-from cloudinary import models as clodinary_models
 
 
 class TravellerUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
@@ -50,7 +49,7 @@ class Profile(models.Model):
             only_letters_validator,
         ),
     )
-    image = clodinary_models.CloudinaryField('image')
+    image = models.ImageField()
     user = models.OneToOneField(
         TravellerUser,
         on_delete=models.CASCADE,

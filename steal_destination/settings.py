@@ -141,35 +141,37 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# LOGGING_LEVEL = 'DEBUG'
-# if is_production():
-#     LOGGING_LEVEL = 'INFO'
-# elif is_test():
-#     LOGGING_LEVEL = 'CRITICAL'
-#
-# LOGGING = {
-#     'version': 1,
-#     'handlers': {
-#         'console': {
-#             # DEBUG, WARNING, INFO, ERROR, CRITICAL,
-#             'level': LOGGING_LEVEL,
-#             'filters': [],
-#             'class': 'logging.StreamHandler',
-#         }
-#     },
-#     'loggers': {
-#         'django.db.backends': {
-#             'level': LOGGING_LEVEL,
-#             'handlers': ['console'],
-#         }
-#     }
-# }
+LOGGING_LEVEL = 'DEBUG'
+if is_production():
+    LOGGING_LEVEL = 'INFO'
+elif is_test():
+    LOGGING_LEVEL = 'CRITICAL'
+
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            # DEBUG, WARNING, INFO, ERROR, CRITICAL,
+            'level': LOGGING_LEVEL,
+            'filters': [],
+            'class': 'logging.StreamHandler',
+        }
+    },
+    'loggers': {
+        'django.db.backends': {
+            'level': LOGGING_LEVEL,
+            'handlers': ['console'],
+        }
+    }
+}
 
 AUTH_USER_MODEL = 'accounts.TravellerUser'
 
-cloudinary.config(
-    cloud_name=os.getenv('CLOUD_NAME', None),
-    api_key=os.getenv('API_KEY', None),
-    api_secret=os.getenv('API_SECRET', None),
-    api_environment_variable=os.getenv('API_ENVIRONMENT_VARIABLE', None),
-)
+# cloudinary.config(
+#     cloud_name=os.getenv('CLOUD_NAME', None),
+#     api_key=os.getenv('API_KEY', None),
+#     api_secret=os.getenv('API_SECRET', None),
+#     api_environment_variable=os.getenv('API_ENVIRONMENT_VARIABLE', None),
+# )
+#
+
