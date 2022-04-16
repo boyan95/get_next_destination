@@ -81,11 +81,11 @@
         <form method="post" action="{% url 'delete profile' profile.pk %}">
             {% csrf_token %}
             <p>Are you sure you want to delete the profile of {{ profile.first_name }} {{ profile.last_name }}?</p>
-            <input type="submit" value="Delete"/>
+            <input type="submit" value="Delete" style="color:red"/>
         </form>
         <br>
-        <p>{% trans 'No, keep my account.' %}</p>
-        <input type="submit" value="Return to account"/>
+        <p>No, keep my account.</p>
+        <a class="btn btn-primary" href="{% url 'profile' profile.pk %}">Return to account</a>
 
     </div>
 
