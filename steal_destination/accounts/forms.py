@@ -50,27 +50,32 @@ class UserRegistrationForm(auth_forms.UserCreationForm):
         widgets = {
             'email': forms.TextInput(
                 attrs={
+                    'class': 'form-control',
                     'placeholder': "Enter email",
                 }
             ),
             'password1': forms.PasswordInput(
                 attrs={
+                    'class': 'form-control',
                     'placeholder': "Enter password",
                 }
             ),
             'password2': forms.PasswordInput(
                 attrs={
+                    'class': 'form-control',
                     'placeholder': "Enter password again",
 
                 }
             ),
             'first_name': forms.TextInput(
                 attrs={
+                    'class': 'form-control',
                     'placeholder': "Enter first name",
                 }
             ),
             'last_name': forms.TextInput(
                 attrs={
+                    'class': 'form-control',
                     'placeholder': "Enter last name",
                 }
             ),

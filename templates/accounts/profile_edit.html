@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-        <style>
+{% extends 'base/base.html' %}
+{% block page_contetnt %}
+    <style>
         body {
             font-family: Arial;
         }
@@ -67,16 +64,24 @@
             color: green;
         }
 
-    </style>
-</head>
-<body>
-<div class="container">
-    <form method="post" action="{% url 'edit profile' object.pk %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <button>Edit</button>
-    </form>
-</div>
+        textarea, select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
-</body>
-</html>
+    </style>
+
+    <div class="container">
+        <form method="post" action="{% url 'edit profile' object.pk %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <button>Edit</button>
+        </form>
+    </div>
+
+{% endblock %}

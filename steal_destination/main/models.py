@@ -127,3 +127,19 @@ class PostImage(models.Model):
 
     def __str__(self):
         return self.post.country_name
+
+
+class Comments(models.Model):
+    destination = models.ForeignKey(Destination, related_name='comments', on_delete=models.CASCADE)
+    name = models.CharField(max_length=40)
+    body = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+
+    )
+
+    def __str__(self):
+        return f'{self.destination.country_name}, {self.destination.venue_name} - {self.name}'

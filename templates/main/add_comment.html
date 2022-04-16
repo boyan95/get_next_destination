@@ -14,6 +14,15 @@
             border-radius: 4px;
             box-sizing: border-box;
         }
+        textarea, select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
         input[type=text], select {
             width: 100%;
@@ -64,22 +73,15 @@
             color: green;
         }
 
-        textarea, select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-    </style>
-    <div class="container">
-        <form method="post" action="{% url 'edit article' object.pk %}">
+    </style
+    >
+    <h1>Add Comment</h1>
+    <br><br>
+    <div class="form-group">
+        <form method="post">
             {% csrf_token %}
             {{ form }}
-            <button>Edit</button>
+            <button class="btn btn-secondary">Add Comment</button>
         </form>
     </div>
 {% endblock %}

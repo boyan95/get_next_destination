@@ -1,6 +1,6 @@
 from django.contrib import admin
 from steal_destination.main.models import Destination
-from .models import Post, PostImage
+from .models import Post, PostImage, Comments
 
 
 @admin.register(Destination)
@@ -26,3 +26,6 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(PostImage)
 class PostImageAdmin(admin.ModelAdmin):
     pass
+
+
+admin.site.register(Comments)

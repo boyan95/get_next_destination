@@ -1,5 +1,5 @@
 from django import forms
-from steal_destination.main.models import Destination, Blog, Post, PostImage
+from steal_destination.main.models import Destination, Blog, Post, PostImage, Comments
 
 
 class CreateDestinationForm(forms.ModelForm):
@@ -40,6 +40,51 @@ class CreateDestinationForm(forms.ModelForm):
         }
 
 
+class EditDestinationForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Destination
+        fields = ('country_name', 'venue_name', 'type', 'description', 'image')
+
+
+class CommentForm(forms.ModelForm):
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
+    def save(self, commit=True):
+        # получаваме дестиация инстацията, не отива към базата
+        comment = super().save(commit=False)
+        comment.user = self.user
+        if commit:
+            comment.save()
+        return comment
+
+    class Meta:
+        model = Comments
+        fields = ('name', 'body',)
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your name'}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter your comment'}),
+        }
+
+
+# class EditCommentForm(forms.ModelForm):
+#     def __init__(self, user, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.user = user
+#
+#     class Meta:
+#         model = Comments
+#         fields = ('name', 'body',)
+#         widgets = {
+#             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your name'}),
+#             'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter your comment'}),
+#         }
+
+
 class BlogForm(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -72,15 +117,6 @@ class BlogForm(forms.ModelForm):
         }
 
 
-class EditDestinationForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-    class Meta:
-        model = Destination
-        fields = ('country_name', 'venue_name', 'type', 'description', 'image')
-
-
 class EditArticleForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -88,5 +124,3 @@ class EditArticleForm(forms.ModelForm):
     class Meta:
         model = Blog
         fields = ('article_name', 'description', 'image',)
-
-

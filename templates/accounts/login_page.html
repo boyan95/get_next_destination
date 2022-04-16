@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
+{% extends 'base/base.html' %}
+{% block page_contetnt %}
     <style>
         body {
             font-family: Arial;
+        }
+
+        input[type=email], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
         input[type=text], select {
@@ -57,18 +64,25 @@
             color: green;
         }
 
+        textarea, select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
     </style>
-</head>
-<body>
-<div class="container">
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        {{ form }}
-        <button>Login</button>
-        {#    </form>#}
-        <br>
-        <a href="{% url 'register' %}">Create Account</a>
-    </form>
-</div>
-</body>
-</html>
+
+    <div class="container">
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form }}
+            <button>Login</button>
+            <br>
+            <a href="{% url 'register' %}">Create Account</a>
+        </form>
+    </div>
+{% endblock %}

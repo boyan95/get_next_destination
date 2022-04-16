@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Post New Article</title>
+{% extends 'base/base.html' %}
+{% block page_contetnt %}
     <style>
         body {
             font-family: Arial;
+        }
+
+        input[type=email], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
         input[type=text], select {
@@ -18,18 +25,7 @@
             box-sizing: border-box;
         }
 
-        textarea, select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-
-        input[type=image], select {
+        input[type=password], select {
             width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
@@ -59,16 +55,32 @@
             background-color: #f2f2f2;
             padding: 20px;
         }
-    </style>
-</head>
-<body>
-<div class=container>
-    <form method="post" action="{% url 'article create' %}" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <button>Post Article</button>
-    </form>
-</div>
 
-</body>
-</html>
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: green;
+        }
+
+        textarea, select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+    </style>
+    <div class=container>
+        <form method="post" action="{% url 'article create' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <button>Post Article</button>
+        </form>
+    </div>
+
+{% endblock %}

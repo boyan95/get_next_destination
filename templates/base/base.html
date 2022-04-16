@@ -39,6 +39,7 @@
                 {#                <li><a class="nav-link" href="{% url 'upload' %}">Pics</a></li>#}
                 <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
             {% else %}
+                <li><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
                 <li><a class="nav-link" href="{% url 'register' %}">Register</a></li>
                 <li><a class="nav-link" href="{% url 'login' %}">Login</a></li>
             {% endif %}
@@ -89,26 +90,15 @@
             ><i class="fab fa-github"></i
             ></a>
         </section>
-        <!-- Section: Social media -->
     </div>
-    <!-- Grid container -->
-
-    <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2022 Copyright:
         <a id='copyrigth' target="_blank" rel="noopener noreferrer" class="text-white"
            href="https://www.linkedin.com/in/boyan-todorov-4578141a2/">Boyan Todorov </a>
     </div>
-    <!-- Copyright -->
 </footer>
-<!-- JavaScript Bundle with Popper -->
-{#<script src="{% static 'js/vendor/jquery-1.11.0.min.js' %}"></script>#}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-{#<script>window.jQuery || document.write('<script src="{% static 'js/vendor/jquery-1.11.0.min.js' %}"><\/script>')</script>#}
-{#<script src="{% static 'js/bootstrap.js' %}"></script>#}
-{#<script src="{% static 'js/plugins.js' %}"></script>#}
-{#<script src="{% static 'js/main.js' %}"></script>#}
 </body>
 </html>

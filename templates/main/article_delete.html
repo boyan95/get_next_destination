@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Delete Destination Post</title>
+{% extends 'base/base.html' %}
+{% block page_contetnt %}
     <style>
         body {
             font-family: Arial;
@@ -49,8 +46,8 @@
             cursor: pointer;
         }
 
-        input[type=submit]:hover {
-            background-color: red;
+        button:hover {
+            background-color: #45a049;
         }
 
         div.container {
@@ -67,16 +64,22 @@
             color: green;
         }
 
+        textarea, select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
 
     </style>
-</head>
-<body>
-<div class="container">
-<form method="post" action="{% url 'delete destination page' object.pk %}">
-    {% csrf_token %}
-    <p>Are you sure you want to delete article {{ object.article_name }}?</p>
-    <input type="submit" value="Delete">
-</form>
-</div>
-</body>
-</html>
+    <div class="container">
+        <form method="post" action="{% url 'delete article' object.pk %}">
+            {% csrf_token %}
+            <p>Are you sure you want to delete article {{ object.article_name }}?</p>
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+{% endblock %}

@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% extends 'base/base.html' %}
+{% block page_contetnt %}
     <style>
         body {
             font-family: Arial;
@@ -28,7 +25,7 @@
             box-sizing: border-box;
         }
 
-        textarea, select {
+        input[type=password], select {
             width: 100%;
             padding: 12px 20px;
             margin: 8px 0;
@@ -67,15 +64,22 @@
             color: green;
         }
 
+        textarea, select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
     </style>
-</head>
-<body>
-<div class="container">
-    <form method="post" action="{% url 'edit destination page' object.pk %}">
-        {% csrf_token %}
-        {{ form }}
-        <button>Edit</button>
-    </form>
-</div>
-</body>
-</html>
+    <div class="container">
+        <form method="post" action="{% url 'edit destination page' object.pk %}">
+            {% csrf_token %}
+            {{ form }}
+            <button>Edit</button>
+        </form>
+    </div>
+{% endblock %}

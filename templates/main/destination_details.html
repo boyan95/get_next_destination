@@ -27,7 +27,7 @@
                         <br>
                         <br>
                         <h3 class="widget-title">{{ destination.country_name }}, {{ destination.venue_name }}</h3>
-                        <br>
+                        <hr>
                         <form action="{% url 'likes destination' destination.pk %}" method="POST">
                             {% csrf_token %}
                             {% if not is_owner %}
@@ -50,7 +50,35 @@
                         {% endif %}
                     </div> <!-- /.widget-item -->
                     <br>
-                    <p>Description:<br>{{ destination.description }}</p>
+                    <hr>
+                    <h3>Description:</h3>
+                    <p>{{ destination.description }}</p>
+                    <hr>
+                    <h3>Comments...</h3>
+                    <br>
+                    {% if not destination.comments.all %}
+                        <p>No Comments Yet...<a href="{% url 'add comment' destination.pk %}">Add One</a></p>
+                    {% else %}
+                        <a href="{% url 'add comment' destination.pk %}">Add Comment</a>
+                        {% for comment in destination.comments.all %}
+                            <br>
+{#                            {% if is_owner %}#}
+{#                                <!-- Buttons -->#}
+{#                                <a href="{% url 'edit comment' destination.pk %}"#}
+{#                                   class="btn btn-warning">Edit</a>#}
+{#                                <a href="{% url 'delete comment' destination.pk %}"#}
+{#                                   class="btn btn-danger">Delete</a>#}
+{#                            {% endif %}#}
+                            <strong>
+                                {{ comment.name }} -
+                                {{ comment.date_added }}
+                            </strong>
+                            <br>
+                            {{ comment.body }}
+                            <br><br>
+                        {% endfor %}
+                        <hr>
+                    {% endif %}
                 </div> <!-- /.col-md-4 -->
             </div> <!-- /.row first -->
         </div> <!-- /.container -->

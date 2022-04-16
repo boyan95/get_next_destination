@@ -75,8 +75,9 @@
         }
 
     </style>
+
     <div class="container">
-        <form method="post" action="{% url 'edit article' object.pk %}">
+        <form method="post" action="{% url 'edit comment' object.pk %}">
             {% csrf_token %}
             {{ form }}
             <button>Edit</button>
