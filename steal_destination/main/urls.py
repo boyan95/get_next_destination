@@ -18,8 +18,8 @@ urlpatterns = [
     path('destination/<int:pk>/delete/', DeleteDestinationView.as_view(),
          name='delete destination page'),
     path('destination/<int:pk>/comment/', CreateCommentView.as_view(), name='add comment'),
-    path('destination/<int:pk>/comment/edit/', EditCommentView.as_view(), name='edit comment'),
-    path('destination/<int:pk>/comment/delete/', DeleteCommentsView.as_view(), name='delete comment'),
+    path('comment/<int:pk>/edit/', EditCommentView.as_view(), name='edit comment'),
+    path('comment/<int:pk>/delete/', DeleteCommentsView.as_view(), name='delete comment'),
 
     path('blog/', BlogView.as_view(), name='blog'),
     path('blog/add/', CreateArticleView.as_view(), name='article create'),

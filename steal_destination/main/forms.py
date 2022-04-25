@@ -72,9 +72,8 @@ class CommentForm(forms.ModelForm):
 
 
 class EditCommentForm(forms.ModelForm):
-    def __init__(self, user, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.user = user
 
     class Meta:
         model = Comments

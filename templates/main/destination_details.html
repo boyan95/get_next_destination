@@ -64,9 +64,9 @@
                             <br>
                             {% if comment.user_id == request.user.id %}
                                 <!-- Buttons -->
-                                <a href="{% url 'edit comment' destination.pk %}"
+                                <a href="{% url 'edit comment' comment.id %}"
                                    class="btn btn-warning">Edit</a>
-                                <a href="{% url 'delete comment' destination.pk %}"
+                                <a href="{% url 'delete comment'  comment.id %}"
                                    class="btn btn-danger">Delete</a>
                             {% endif %}
                             <strong>
