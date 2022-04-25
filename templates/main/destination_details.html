@@ -62,13 +62,13 @@
                         <a href="{% url 'add comment' destination.pk %}">Add Comment</a>
                         {% for comment in destination.comments.all %}
                             <br>
-{#                            {% if is_owner %}#}
-{#                                <!-- Buttons -->#}
-{#                                <a href="{% url 'edit comment' destination.pk %}"#}
-{#                                   class="btn btn-warning">Edit</a>#}
-{#                                <a href="{% url 'delete comment' destination.pk %}"#}
-{#                                   class="btn btn-danger">Delete</a>#}
-{#                            {% endif %}#}
+                            {% if comment.user_id == request.user.id %}
+                                <!-- Buttons -->
+                                <a href="{% url 'edit comment' destination.pk %}"
+                                   class="btn btn-warning">Edit</a>
+                                <a href="{% url 'delete comment' destination.pk %}"
+                                   class="btn btn-danger">Delete</a>
+                            {% endif %}
                             <strong>
                                 {{ comment.name }} -
                                 {{ comment.date_added }}

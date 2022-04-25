@@ -71,18 +71,18 @@ class CommentForm(forms.ModelForm):
         }
 
 
-# class EditCommentForm(forms.ModelForm):
-#     def __init__(self, user, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.user = user
-#
-#     class Meta:
-#         model = Comments
-#         fields = ('name', 'body',)
-#         widgets = {
-#             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your name'}),
-#             'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter your comment'}),
-#         }
+class EditCommentForm(forms.ModelForm):
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+
+    class Meta:
+        model = Comments
+        fields = ('name', 'body',)
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your name'}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter your comment'}),
+        }
 
 
 class BlogForm(forms.ModelForm):

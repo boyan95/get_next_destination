@@ -18,10 +18,10 @@ def validate_file_max_size_in_mb(max_size):
         return validate
 
 
-@deconstructible
-class ValidateFileMaxSizeInMb:
-    def __init__(self, max_size):
-        self.max_size = max_size
-
-    def __call__(self, value):
-        pass
+# @deconstructible
+# class ValidateFileMaxSizeInMb:
+#     def __init__(self, max_size):
+#         self.max_size = max_size
+#
+#     def __call__(self, value):
+#         pass

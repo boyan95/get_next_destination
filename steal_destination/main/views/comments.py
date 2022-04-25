@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
-from steal_destination.main.forms import CommentForm
+from steal_destination.main.forms import CommentForm, EditCommentForm
 from steal_destination.main.models import Comments
 from django.views import generic as views
 
@@ -25,18 +25,18 @@ class CreateCommentView(LoginRequiredMixin, views.CreateView):
     def get_success_url(self):
         return reverse_lazy('destination', kwargs={'pk': self.object.destination_id})
 
-# class EditCommentView(views.UpdateView):
-#     model = Comments
-#     form_class = EditCommentForm
-#     template_name = 'main/edit_comment.html'
-#
-#     def get_success_url(self):
-#         return reverse_lazy('destination', kwargs={'pk': self.object.destination_id})
-#
-#
-# class DeleteCommentsView(views.DeleteView):
-#     model = Comments
-#     template_name = 'main/delete_comment.html'
-#
-#     def get_success_url(self):
-#         return reverse_lazy('destination', kwargs={'pk': self.object.destination_id})
+class EditCommentView(views.UpdateView):
+    model = Comments
+    form_class = EditCommentForm
+    template_name = 'main/edit_comment.html'
+
+    def get_success_url(self):
+        return reverse_lazy('destination', kwargs={'pk': self.object.destination_id})
+
+
+class DeleteCommentsView(views.DeleteView):
+    model = Comments
+    template_name = 'main/delete_comment.html'
+
+    def get_success_url(self):
+        return reverse_lazy('destination', kwargs={'pk': self.object.destination_id})
